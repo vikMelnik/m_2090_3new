@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="come.geekbrains.vitekm.m_2090_3.FirstFragment"
+        android:name="come.geekbrains.vitekm.m_2090_3.view.PictureOfTheDayFragment"
         android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        tools:layout="@layout/fragment_picture">
 
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
