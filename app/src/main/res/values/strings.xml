@@ -6,7 +6,11 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
+    <string name="hint">подсказка</string>
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="photo_of_the_day_stub">photo_of_the_day_stub</string>
+    <string name="reload">Loading!!!</string>
+    <string name="error">Error!!!</string>
 </resources>
