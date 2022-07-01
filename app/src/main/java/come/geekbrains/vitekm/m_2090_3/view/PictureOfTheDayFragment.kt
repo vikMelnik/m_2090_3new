@@ -31,7 +31,7 @@ class PictureOfTheDayFragment : Fragment() {
     private val yesterday = (c.get(Calendar.DAY_OF_MONTH) - 1).toString()
     private val beforeYesterday = (c.get(Calendar.DAY_OF_MONTH) - 2).toString()
 
-    //private val date: String = SimpleDateFormat("yyyy-MM-dd").format(Date())
+   // private val date: String = SimpleDateFormat("yyyy-MM-dd").format(Date())
 
 
     private var _binding: FragmentPictureBinding? = null
@@ -68,7 +68,8 @@ class PictureOfTheDayFragment : Fragment() {
         //binding.chipYesterday.isEnabled = false
         binding.chipYesterday.setOnClickListener {
             viewModel.sendRequest("$year-$month-$yesterday")
-            Log.d("MyLog", "$year-$month-$yesterday")
+
+
         }
 
         binding.inputLayout.setEndIconOnClickListener {
@@ -87,7 +88,7 @@ class PictureOfTheDayFragment : Fragment() {
                     getString(R.string.error), Snackbar.LENGTH_LONG
                 )
                     .setAction(getString(R.string.reload))
-                    { viewModel.sendRequest("$year-$month-$day") }.show()
+                   { viewModel.sendRequest("$year-$month-$day") }.show()
             }
             AppState.Loading -> {
                 Snackbar.make(
@@ -117,3 +118,4 @@ class PictureOfTheDayFragment : Fragment() {
     }
 
 }
+
