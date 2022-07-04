@@ -4,11 +4,17 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/AndroidStudioProjects/KotlinLesson/m_2090_3/app/src/main/res/drawable/ic_archive.xml" value="0.1255" />
+        <entry key="..\:/AndroidStudioProjects/KotlinLesson/m_2090_3/app/src/main/res/drawable/ic_favourite_menu.xml" value="0.1075" />
+        <entry key="..\:/AndroidStudioProjects/KotlinLesson/m_2090_3/app/src/main/res/drawable/ic_hamburger_menu_bottom_bar.xml" value="0.1365" />
         <entry key="..\:/AndroidStudioProjects/KotlinLesson/m_2090_3/app/src/main/res/drawable/ic_no_photo_vector.xml" value="0.1255" />
         <entry key="..\:/AndroidStudioProjects/KotlinLesson/m_2090_3/app/src/main/res/drawable/my_selector_chipes.xml" value="0.1255" />
+        <entry key="..\:/AndroidStudioProjects/KotlinLesson/m_2090_3/app/src/main/res/font/aladin.xml" value="0.25277777777777777" />
         <entry key="..\:/AndroidStudioProjects/KotlinLesson/m_2090_3/app/src/main/res/layout/activity_main.xml" value="0.18981481481481483" />
         <entry key="..\:/AndroidStudioProjects/KotlinLesson/m_2090_3/app/src/main/res/layout/activity_main2.xml" value="0.31666666666666665" />
-        <entry key="..\:/AndroidStudioProjects/KotlinLesson/m_2090_3/app/src/main/res/layout/fragment_picture.xml" value="0.25" />
+        <entry key="..\:/AndroidStudioProjects/KotlinLesson/m_2090_3/app/src/main/res/layout/bottom_navigation_layout.xml" value="0.3307291666666667" />
+        <entry key="..\:/AndroidStudioProjects/KotlinLesson/m_2090_3/app/src/main/res/layout/fragment_picture.xml" value="0.18" />
+        <entry key="..\:/AndroidStudioProjects/KotlinLesson/m_2090_3/app/src/main/res/menu/menu_bottom_navigation.xml" value="1.0" />
+        <entry key="..\:/AndroidStudioProjects/KotlinLesson/m_2090_3/app/src/main/res/menu/menu_bottom_navigation_view.xml" value="0.3307291666666667" />
         <entry key="..\:/AndroidStudioProjects/KotlinLesson/m_2090_3/app/src/main/res/menu/menu_main.xml" value="0.3307291666666667" />
         <entry key="..\:/AndroidStudioProjects/KotlinLesson/m_2090_3/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1255" />
       </map>

@@ -13,4 +13,7 @@
     <string name="photo_of_the_day_stub">photo_of_the_day_stub</string>
     <string name="reload">Loading!!!</string>
     <string name="error">Error!!!</string>
+    <string name="favourite">Favourite</string>
+    <string name="settings">Settings</string>
+
 </resources>
