@@ -1,4 +1,4 @@
-package come.geekbrains.vitekm.m_2090_3.view
+package come.geekbrains.vitekm.m_2090_3.view.picture
 
 
 import android.content.Intent
@@ -15,6 +15,7 @@ import come.geekbrains.vitekm.m_2090_3.R
 import come.geekbrains.vitekm.m_2090_3.databinding.FragmentPictureBinding
 import come.geekbrains.vitekm.m_2090_3.utils.*
 import come.geekbrains.vitekm.m_2090_3.view.drawer.BottomNavigationDrawerFragment
+import come.geekbrains.vitekm.m_2090_3.view.settings.SettingsFragment
 import come.geekbrains.vitekm.m_2090_3.viewmodel.AppState
 import come.geekbrains.vitekm.m_2090_3.viewmodel.PictureOfTheDayViewModel
 
@@ -54,7 +55,7 @@ class PictureOfTheDayFragment : Fragment() {
         binding.chipToday.setOnClickListener {
             viewModel.sendRequest("$year-$month-$day")
         }
-        //binding.chipYesterday.isEnabled = false
+
         binding.chipYesterday.setOnClickListener {
             viewModel.sendRequest("$year1-$month1-$yesterday")
 
@@ -84,8 +85,8 @@ class PictureOfTheDayFragment : Fragment() {
         when (item.itemId) {
             R.id.action_favorite -> {}
             R.id.action_settings -> {
-//                requireActivity().supportFragmentManager.beginTransaction().hide(this)
-//                    .add(R.id.container, SettingsFragment.newInstance()).addToBackStack("").commit()
+                requireActivity().supportFragmentManager.beginTransaction().hide(this)
+                    .add(R.id.container, SettingsFragment.newInstance()).addToBackStack("").commit()
             }
             android.R.id.home -> {
                 activity?.let {

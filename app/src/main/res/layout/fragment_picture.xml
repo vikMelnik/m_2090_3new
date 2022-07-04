@@ -10,7 +10,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/chipGroup"
         android:layout_width="wrap_content"
@@ -25,19 +27,19 @@
             android:id="@+id/chipDayBefore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="day before yesterday" />
+            android:text="@string/day_before_yesterday" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chipYesterday"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="yesterday" />
+            android:text="@string/yesterday" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chipToday"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="today" />
+            android:text="@string/today" />
     </com.google.android.material.chip.ChipGroup>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -56,7 +58,9 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/input"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:textColorHint="#546E7A"
+            tools:ignore="TextContrastCheck" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -67,6 +71,7 @@
         android:layout_gravity="center"
         android:contentDescription="@string/photo_of_the_day_stub"
         app:layout_constraintTop_toBottomOf="@+id/inputLayout" />
+</androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottom_app_bar"
@@ -82,6 +87,7 @@
         android:layout_height="wrap_content"
         app:layout_anchor="@id/bottom_app_bar"
         app:srcCompat="@drawable/ic_plus_fab"
-        app:tint="#009688" />
+        app:tint="#009688"
+        tools:ignore="SpeakableTextPresentCheck"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

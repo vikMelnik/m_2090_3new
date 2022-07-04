@@ -15,5 +15,11 @@
     <string name="error">Error!!!</string>
     <string name="favourite">Favourite</string>
     <string name="settings">Settings</string>
+    <string name="red">ThemeRed</string>
+    <string name="yellow">ThemeYelow</string>
+    <string name="purple">ThemePurple</string>
+    <string name="yesterday">Yesterday</string>
+    <string name="day_before_yesterday">Day before yesterday</string>
+    <string name="today">Today</string>
 
 </resources>

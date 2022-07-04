@@ -12,6 +12,7 @@
         <item name="shapeAppearanceMediumComponent">@style/MyShapeAppearanceMediumComponent</item>
 
         <item name="bottomAppBarStyle">@style/MyAppBarStyle</item>
+        <item name="tabStyle">@style/MyTabLayoutStyle</item>
 
         <!-- Status bar color. -->
         <!--        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>-->
@@ -67,6 +68,10 @@
         <item name="cornerSize">50%</item>
     </style>
 
+    <style name="MyTabLayoutStyle" parent="Widget.Material3.TabLayout">
+        <item name="tabIndicatorFullWidth">false</item>
+        <item name="tabIndicatorColor">?myColor2</item>
+    </style>
 
     <style name="MyShapeAppearanceMediumComponent" parent="ShapeAppearance.Material3.MediumComponent">
         <item name="cornerFamily">rounded</item>
