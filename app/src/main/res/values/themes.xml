@@ -2,6 +2,19 @@
     <!-- Base application theme. -->
     <style name="Theme.M_2090_3" parent="Theme.Material3.DynamicColors.DayNight">
 
+<!--        &lt;!&ndash; Primary brand color. &ndash;&gt;-->
+<!--        <item name="colorPrimary">@color/purple_500</item>-->
+<!--        <item name="colorPrimaryVariant">@color/purple_700</item>-->
+<!--        <item name="colorOnPrimary">@color/white</item>-->
+<!--        &lt;!&ndash; Secondary brand color. &ndash;&gt;-->
+<!--        <item name="colorSecondary">@color/teal_200</item>-->
+<!--        <item name="colorSecondaryVariant">@color/teal_700</item>-->
+<!--        <item name="colorOnSecondary">@color/black</item>-->
+<!--        &lt;!&ndash; Status bar color. &ndash;&gt;-->
+<!--        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>-->
+<!--        &lt;!&ndash; Customize your theme here. &ndash;&gt;-->
+<!--        -->
+
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
 
@@ -14,20 +27,21 @@
         <item name="bottomAppBarStyle">@style/MyAppBarStyle</item>
         <item name="tabStyle">@style/MyTabLayoutStyle</item>
 
+
         <!-- Status bar color. -->
         <!--        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>-->
 
         <!-- Customize your theme here. -->
-<!--                <item name="textAppearanceBody2">@style/MyTextAppearanceBody2</item>-->
-        <!--        <item name="textAppearanceLabelLarge">@style/MyTextAppearanceBody2</item>-->
+                <item name="textAppearanceBody2">@style/MyTextAppearanceBody2</item>
+                <item name="textAppearanceLabelLarge">@style/MyTextAppearanceBody2</item>
 <!--                <item name="colorPrimary">?attr/myColor</item>-->
-        <!--        <item name="colorOnSecondaryContainer">?myColor</item>-->
+                <item name="colorOnSecondaryContainer">?myColor</item>
 
                 <item name="colorPrimaryContainer">?myColor</item>
                 <item name="colorOnSurfaceVariant">?myColor</item>
                 <item name="chipStyle">@style/MyStyle</item>
                 <item name="textInputStyle">@style/MyTextInputLayoutStyle</item>
-<!--                <item name="shapeAppearanceSmallComponent">@style/MyShapeAppearanceSmallComponent</item>-->
+                <item name="shapeAppearanceSmallComponent">@style/MyShapeAppearanceSmallComponent</item>
     </style>
 
     <style name="MyBottomNavigationView" parent="Widget.Material3.BottomNavigationView">
@@ -44,14 +58,28 @@
     <!--    //MyThemes Red, Yellow, Purple ......-->
     <style name="MyRedTheme" parent="MyNewTheme">
         <item name="myColor">#FF0101</item>
+        <!-- Primary brand color. -->
+
+        <item name="colorPrimary">@color/red_1</item>
+        <item name="colorPrimaryVariant">@color/red_2</item>
+        <item name="colorOnPrimary">@color/red_3</item>
+
     </style>
 
     <style name="MyYellowTheme" parent="MyNewTheme">
         <item name="myColor">#FFC107</item>
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/yellow_1</item>
+        <item name="colorPrimaryVariant">@color/yellow_2</item>
+        <item name="colorOnPrimary">@color/yellow_3</item>
     </style>
 
     <style name="MyPurpleTheme" parent="MyNewTheme">
         <item name="myColor">#673AB7</item>
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/purple_1</item>
+        <item name="colorPrimaryVariant">@color/purple_2</item>
+        <item name="colorOnPrimary">@color/purple_3</item>
     </style>
 
     <style name="MyTextAppearanceBody2" parent="TextAppearance.MaterialComponents.Body2">
