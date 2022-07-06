@@ -2,30 +2,18 @@ package come.geekbrains.vitekm.m_2090_3.view.naviation
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
-class ViewPagerAdapter(fragmentManager: FragmentManager) :
-    FragmentStatePagerAdapter(fragmentManager) {
+class ViewPagerAdapter(fragmentActivity: FragmentActivity) :
+    FragmentStateAdapter(fragmentActivity) {
 
     private val fragments = arrayOf(EarthFragment(), MarsFragment(), SystemFragment())
 
-    override fun getPageTitle(position: Int): CharSequence? {
-        return when(position){
-            0->{"Earth"}
-            1->{"Mars"}
-            2->{"SunSystem"}
-            else -> "Earth"
-        }
-    }
-
-
-    override fun getCount(): Int {
+    override fun getItemCount(): Int {
         return fragments.size
     }
 
-    override fun getItem(position: Int): Fragment {
+    override fun createFragment(position: Int): Fragment {
         return fragments[position]
     }
 }
