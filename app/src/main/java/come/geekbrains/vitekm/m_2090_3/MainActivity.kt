@@ -2,7 +2,6 @@ package come.geekbrains.vitekm.m_2090_3
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.ui.AppBarConfiguration
 import androidx.core.view.WindowCompat
 import come.geekbrains.vitekm.m_2090_3.databinding.ActivityMainBinding
 import come.geekbrains.vitekm.m_2090_3.view.picture.PictureOfTheDayFragment
@@ -28,10 +27,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        if(savedInstanceState==null){
-            supportFragmentManager.beginTransaction().replace(R.id.container,
-                PictureOfTheDayFragment.newInstance()).commit()
-        }
+//        if(savedInstanceState==null){
+//            supportFragmentManager.beginTransaction().replace(R.id.container,
+//                PictureOfTheDayFragment.newInstance()).commit()
+//        }
 
     }
 

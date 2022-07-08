@@ -21,7 +21,8 @@ class ViewPagerActivity : AppCompatActivity() {
     }
 
     private fun setTabs() {
-        TabLayoutMediator(binding.tabLayout, binding.viewPager2
+        TabLayoutMediator(binding.tabLayout,
+                            binding.viewPager2
         ) { tab, position ->
             tab.text = when (position) {
                 0 -> {

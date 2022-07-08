@@ -25,6 +25,12 @@
         <activity
             android:name=".view.naviation.ViewPagerActivity"
             android:exported="true" >
+
+        </activity>
+
+        <activity
+            android:name=".view.naviation.BottomBarActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

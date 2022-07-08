@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import coil.load
 import com.google.android.material.snackbar.Snackbar
-import come.geekbrains.vitekm.m_2090_3.MainActivity
 import come.geekbrains.vitekm.m_2090_3.R
 import come.geekbrains.vitekm.m_2090_3.databinding.FragmentPictureBinding
 import come.geekbrains.vitekm.m_2090_3.utils.*
@@ -25,6 +24,7 @@ class PictureOfTheDayFragment : Fragment() {
 
     private var _binding: FragmentPictureBinding? = null
     private val binding get() = _binding!!
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,7 +45,15 @@ class PictureOfTheDayFragment : Fragment() {
         viewModel.getLiveData().observe(viewLifecycleOwner) { appState ->
             renderData(appState)
         }
-        viewModel.sendRequest("$year-$month-$day")
+
+        val dateOfTheDay = when(arguments?.getInt(DAY_BUNDLE_EXTRA)){
+            0 -> "$year-$month-$day"
+            1 -> "$year1-$month1-$yesterday"
+            2 -> "$year2-$month2-$beforeYesterday"
+            else -> "$year-$month-$day"
+        }
+
+        viewModel.sendRequest(dateOfTheDay)
         Log.d("MyLog", "$year-$month-$day")
 
         binding.chipDayBefore.setOnClickListener {
@@ -66,15 +74,8 @@ class PictureOfTheDayFragment : Fragment() {
                 data = Uri.parse("https://en.wikipedia.org/wiki/${binding.input.text.toString()}")
             })
         }
-        setBottomAppBar(view)
-    }
+            }
 
-    private fun setBottomAppBar(view: View) {
-        val context = activity as MainActivity
-        context.setSupportActionBar(view.findViewById(R.id.bottom_app_bar))
-        setHasOptionsMenu(true)
-
-    }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
@@ -125,10 +126,13 @@ class PictureOfTheDayFragment : Fragment() {
         }
 
     }
-
-
     companion object {
-        fun newInstance() = PictureOfTheDayFragment()
+        fun newInstance(bundle: Bundle) : PictureOfTheDayFragment {
+            val fragment = PictureOfTheDayFragment()
+            fragment.arguments = bundle
+            return fragment
+        }
+        const val DAY_BUNDLE_EXTRA = "DAY_BUNDLE_EXTRA"
     }
 
     override fun onDestroyView() {
