@@ -32,13 +32,15 @@ class BottomBarActivity : AppCompatActivity() {
             }
 
         }
-//        binding.bottomNavigationView.selectedItemId = R.id.action_view_earth
-//
-//        val badge = binding.bottomNavigationView.getOrCreateBadge(R.id.action_view_system)
-//        //badge
-//        badge.number = 1000
-//        badge.maxCharacterCount = 5
-//        badge.badgeGravity = BadgeDrawable.BOTTOM_START
+        binding.bottomNavigationView.selectedItemId = R.id.action_view_earth
+
+        val badge = binding.bottomNavigationView.getOrCreateBadge(R.id.action_view_system)
+         //badge
+        badge.number = 89999
+        badge.maxCharacterCount = 5
+        badge.badgeGravity = BadgeDrawable.TOP_START
+
+        //Очистка бейджа
         //binding.bottomNavigationView.removeBadge(R.id.action_view_system)
     }
 
