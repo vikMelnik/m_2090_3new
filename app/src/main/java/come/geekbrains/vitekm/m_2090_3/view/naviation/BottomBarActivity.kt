@@ -34,11 +34,16 @@ class BottomBarActivity : AppCompatActivity() {
         }
         binding.bottomNavigationView.selectedItemId = R.id.action_view_earth
 
-        val badge = binding.bottomNavigationView.getOrCreateBadge(R.id.action_view_system)
+        val badgeS = binding.bottomNavigationView.getOrCreateBadge(R.id.action_view_system)
+        val badgeM = binding.bottomNavigationView.getOrCreateBadge(R.id.action_view_mars)
          //badge
-        badge.number = 89999
-        badge.maxCharacterCount = 5
-        badge.badgeGravity = BadgeDrawable.TOP_START
+        badgeS.number = 99
+        badgeS.maxCharacterCount = 3
+        badgeS.badgeGravity = BadgeDrawable.TOP_START
+
+        badgeM.number = 10000
+        badgeM.maxCharacterCount = 5
+        badgeM.badgeGravity = BadgeDrawable.BOTTOM_END
 
         //Очистка бейджа
         //binding.bottomNavigationView.removeBadge(R.id.action_view_system)
