@@ -29,7 +29,7 @@ class LayoutActivity : AppCompatActivity() {
                     true
                 }
                 R.id.action_motion -> {
-                    //navigationTo(MotionFragment())
+                    navigationTo(MotionFragment())
                     true
                 }
                 else -> true
