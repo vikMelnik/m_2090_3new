@@ -64,7 +64,7 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline1"
         app:layout_constraintStart_toStartOf="@+id/guideline1"
         app:layout_constraintTop_toTopOf="@id/guideline4"
-        app:layout_constraintWidth_percent="0.33" />
+        app:layout_constraintWidth_percent="0.2" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn2"
@@ -87,7 +87,7 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="@id/guideline5"
-        app:layout_constraintWidth_percent="0.23" />
+        app:layout_constraintWidth_percent="0.5" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

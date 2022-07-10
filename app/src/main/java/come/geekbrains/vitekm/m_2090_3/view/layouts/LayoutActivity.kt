@@ -25,7 +25,7 @@ class LayoutActivity : AppCompatActivity() {
                     true
                 }
                 R.id.action_coordinator -> {
-                   //navigationTo(CoordinatorFragment())
+                    navigationTo(CoordinatorFragment())
                     true
                 }
                 R.id.action_motion -> {
