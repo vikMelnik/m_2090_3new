@@ -9,14 +9,14 @@ import come.geekbrains.vitekm.m_2090_3.databinding.FragmentMotionBinding
 import come.geekbrains.vitekm.m_2090_3.databinding.FragmentMotionStartBinding
 
 class MotionFragment: Fragment() {
-    private var _binding: FragmentMotionStartBinding? = null
-    private val binding: FragmentMotionStartBinding
+    private var _binding: FragmentMotionBinding? = null
+    private val binding: FragmentMotionBinding
         get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentMotionStartBinding.inflate(inflater, container, false)
+        _binding = FragmentMotionBinding.inflate(inflater, container, false)
         return binding.root
     }
     override fun onDestroy() {
