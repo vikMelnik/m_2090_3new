@@ -20,7 +20,7 @@
             android:layout_height="match_parent"
             android:background="?colorAccent"
             android:fitsSystemWindows="true"
-            app:contentScrim="@color/purple_500"
+            app:contentScrim="@color/white"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:toolbarId="@+id/toolbar">
 
@@ -57,11 +57,18 @@
     <!--  app:layout_anchor="@id/appBar"
       app:layout_anchorGravity="bottom|end"-->
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/fab2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2"
+        app:layout_behavior=".view.layouts.behaviors.MyBehaviorButton2"/>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/bottomSheetContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#A0A0E8"
+        android:background="#C2C2DD"
         app:behavior_hideable="true"
         app:behavior_peekHeight="50dp"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
@@ -75,6 +82,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+
 
         <TextView
             android:id="@+id/bottomSheetDescriptionHeader"

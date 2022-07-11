@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.Button
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import come.geekbrains.vitekm.m_2090_3.R
+import come.geekbrains.vitekm.m_2090_3.utils.c
 
 class MyBehaviorButton2(context: Context, attrs: AttributeSet?=null): CoordinatorLayout.Behavior<Button>(context,attrs)  {
 
@@ -15,7 +16,7 @@ class MyBehaviorButton2(context: Context, attrs: AttributeSet?=null): Coordinato
         child: Button,
         dependency: View
     ): Boolean {
-        return (dependency.id == R.id.btn1)
+        return (dependency.id == R.id.bottomSheetContainer)
     }
 
 
@@ -24,10 +25,11 @@ class MyBehaviorButton2(context: Context, attrs: AttributeSet?=null): Coordinato
         child: Button,
         dependency: View
     ): Boolean {
-        if(dependency.id ==R.id.btn1){
+        if(dependency.id ==R.id.bottomSheetContainer){
             Log.d("@@@","${dependency.y} ${dependency.height}")
-            child.x = dependency.y +child.width
-            child.y = dependency.y
+
+            child.x = dependency.y - 900
+            child.y = dependency.x + 900
         }
         return super.onDependentViewChanged(parent, child, dependency)
     }
