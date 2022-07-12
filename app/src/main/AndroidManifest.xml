@@ -42,12 +42,19 @@
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.M_2090_3.NoActionBar">
+
+        </activity>
+
+        <activity
+            android:name=".view.animation.AnimationActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
