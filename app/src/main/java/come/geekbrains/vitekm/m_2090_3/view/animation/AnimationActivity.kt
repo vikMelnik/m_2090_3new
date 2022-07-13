@@ -8,24 +8,48 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.transition.*
 import come.geekbrains.vitekm.m_2090_3.R
 import come.geekbrains.vitekm.m_2090_3.databinding.ActivityAnimationBinding
+import come.geekbrains.vitekm.m_2090_3.databinding.ActivityAnimationMixBinding
 import come.geekbrains.vitekm.m_2090_3.databinding.ActivityAnimationTreckBinding
 
 
 class AnimationActivity: AppCompatActivity() {
 
-    private lateinit var binding: ActivityAnimationTreckBinding
+    private lateinit var binding: ActivityAnimationMixBinding
     var isFlag = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityAnimationTreckBinding.inflate(layoutInflater)
+        binding = ActivityAnimationMixBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val titles: MutableList<String> = ArrayList()
+        for (i in 0..4) {
+            titles.add(String.format("Item %d", i + 1))
+        }
+
+        binding.button.setOnClickListener{
+            isFlag = !isFlag
+            TransitionManager.beginDelayedTransition(binding.root)
+            binding.transitionsContainer.removeAllViews()
+
+            titles.shuffle()
+            titles.forEach {binding.transitionsContainer.addView(
+                    TextView(this).apply {
+                        text = it
+                        ViewCompat.setTransitionName(this, it) // Задали псевдоним
+                    }
+                )
+            }
+
+        }
 
         // 3) Tracking
 //        binding.button.setOnClickListener{
