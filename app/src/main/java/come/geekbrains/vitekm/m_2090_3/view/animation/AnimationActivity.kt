@@ -18,22 +18,23 @@ import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.transition.*
 import come.geekbrains.vitekm.m_2090_3.R
-import come.geekbrains.vitekm.m_2090_3.databinding.ActivityAnimationBinding
-import come.geekbrains.vitekm.m_2090_3.databinding.ActivityAnimationMixBinding
-import come.geekbrains.vitekm.m_2090_3.databinding.ActivityAnimationObjectBinding
-import come.geekbrains.vitekm.m_2090_3.databinding.ActivityAnimationTreckBinding
+import come.geekbrains.vitekm.m_2090_3.databinding.*
 
 
 class AnimationActivity: AppCompatActivity() {
 
-    private lateinit var binding: ActivityAnimationObjectBinding
+    private lateinit var binding: ActivityAnimationsFabScrolBinding
     var isFlag = false
     private val duration = 2000L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityAnimationObjectBinding.inflate(layoutInflater)
+        binding = ActivityAnimationsFabScrolBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.scrollView.setOnScrollChangeListener { _, _, _, _, _ ->
+            binding.toolbar.isSelected = binding.scrollView.canScrollVertically(-1)
+        }
 
         // 4) Mix
         val titles: MutableList<String> = ArrayList()
