@@ -1,5 +1,8 @@
 package come.geekbrains.vitekm.m_2090_3.view.animation
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
+import android.animation.ObjectAnimator
 import android.graphics.Rect
 import android.os.Bundle
 import android.view.Gravity
@@ -17,160 +20,77 @@ import androidx.transition.*
 import come.geekbrains.vitekm.m_2090_3.R
 import come.geekbrains.vitekm.m_2090_3.databinding.ActivityAnimationBinding
 import come.geekbrains.vitekm.m_2090_3.databinding.ActivityAnimationMixBinding
+import come.geekbrains.vitekm.m_2090_3.databinding.ActivityAnimationObjectBinding
 import come.geekbrains.vitekm.m_2090_3.databinding.ActivityAnimationTreckBinding
 
 
 class AnimationActivity: AppCompatActivity() {
 
-    private lateinit var binding: ActivityAnimationMixBinding
-    var isFlag = true
+    private lateinit var binding: ActivityAnimationObjectBinding
+    var isFlag = false
+    private val duration = 2000L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityAnimationMixBinding.inflate(layoutInflater)
+        binding = ActivityAnimationObjectBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // 4) Mix
         val titles: MutableList<String> = ArrayList()
         for (i in 0..4) {
             titles.add(String.format("Item %d", i + 1))
         }
 
-        binding.button.setOnClickListener{
+        binding.fab.setOnClickListener {
             isFlag = !isFlag
-            TransitionManager.beginDelayedTransition(binding.root)
-            binding.transitionsContainer.removeAllViews()
 
-            titles.shuffle()
-            titles.forEach {binding.transitionsContainer.addView(
-                    TextView(this).apply {
-                        text = it
-                        ViewCompat.setTransitionName(this, it) // Задали псевдоним
+            if(isFlag){
+                ObjectAnimator.ofFloat(binding.plusImageview, View.ROTATION, 0f, 675f).setDuration(duration).start()
+                ObjectAnimator.ofFloat(binding.optionOneContainer, View.TRANSLATION_Y, -130f).setDuration(duration).start()
+                ObjectAnimator.ofFloat(binding.optionTwoContainer, View.TRANSLATION_Y, -230f).setDuration(duration).start()
+
+                ObjectAnimator.ofFloat(binding.transparentBackground, View.ALPHA, 0f).setDuration(duration).start()
+
+                binding.optionOneContainer.animate().alpha(1f).setDuration(duration).setListener(
+                    object : AnimatorListenerAdapter(){
+                        override fun onAnimationEnd(animation: Animator?) {
+                            binding.optionOneContainer.isClickable = true
+                        }
+                    }
+                )
+                binding.optionTwoContainer.animate().alpha(1f).setDuration(duration).setListener(
+                    object : AnimatorListenerAdapter(){
+                        override fun onAnimationEnd(animation: Animator?) {
+                            binding.optionTwoContainer.isClickable = true
+                        }
+                    }
+                )
+
+            }else{
+                ObjectAnimator.ofFloat(binding.plusImageview, View.ROTATION, 675f, 0f).setDuration(duration).start()
+                ObjectAnimator.ofFloat(binding.optionOneContainer, View.TRANSLATION_Y, 0f).setDuration(duration).start()
+                ObjectAnimator.ofFloat(binding.optionTwoContainer, View.TRANSLATION_Y, 0f).setDuration(duration).start()
+
+                ObjectAnimator.ofFloat(binding.transparentBackground, View.ALPHA, 0.8f).setDuration(duration).start()
+
+                binding.optionOneContainer.animate().alpha(0f).setDuration(duration).setListener(
+                    object : AnimatorListenerAdapter(){
+                        override fun onAnimationEnd(animation: Animator?) {
+                            binding.optionOneContainer.isClickable = false
+                        }
+                    }
+                )
+                binding.optionTwoContainer.animate().alpha(0f).setDuration(duration).setListener(
+                    object : AnimatorListenerAdapter(){
+                        override fun onAnimationEnd(animation: Animator?) {
+                            binding.optionTwoContainer.isClickable = false
+                        }
                     }
                 )
             }
 
         }
-
-        // 3) Tracking
-//        binding.button.setOnClickListener{
-//            isFlag = !isFlag
-//
-//            val params = it.layoutParams as FrameLayout.LayoutParams
-//
-//            val changeBounds = ChangeBounds()
-//            changeBounds.duration = 2000L
-//            changeBounds.setPathMotion(ArcMotion())
-//
-//            TransitionManager.beginDelayedTransition(binding.root, changeBounds)
-//
-//            if (isFlag){
-//                params.gravity = Gravity.TOP or Gravity.START
-//
-//            }else{
-//                params.gravity = Gravity.BOTTOM or Gravity.END
-//
-//            }
-//
-//            it.layoutParams = params    //Иногда работает без нее
-//        }
-
-
-        // 2) Increase objects
-//        binding.imageView.setOnClickListener{
-//            isFlag = !isFlag
-//
-//            val params = it.layoutParams as ConstraintLayout.LayoutParams
-//
-//            val transitionSet = TransitionSet()
-//            val changeImageTransform = ChangeImageTransform()
-//            val changeBounds = ChangeBounds()
-//            changeImageTransform.duration = 2000L
-//            changeBounds.duration = 2000L
-//
-//            transitionSet.addTransition(changeBounds)           // Важен порядок, changeImageTransform после changeBounds
-//            transitionSet.addTransition(changeImageTransform)
-//
-//
-//            TransitionManager.beginDelayedTransition(binding.root, transitionSet)
-//
-//            if (isFlag){
-//                params.height = ConstraintLayout.LayoutParams.MATCH_PARENT
-//                binding.imageView.scaleType = ImageView.ScaleType.CENTER_CROP
-//            }else{
-//                params.height = ConstraintLayout.LayoutParams.WRAP_CONTENT
-//                binding.imageView.scaleType = ImageView.ScaleType.CENTER_INSIDE
-//            }
-//
-//            it.layoutParams = params    //Иногда работает без нее
-//        }
-
-        // 1) Transition
-//        binding.button.setOnClickListener{
-//            isFlag = !isFlag
-//
-//            val myAutoTransition = TransitionSet()
-//            myAutoTransition.ordering = TransitionSet.ORDERING_TOGETHER
-//
-//            //val fade = Fade()
-//            val fade = Hold()
-//            //val fade = Slide(Gravity.END)
-//            fade.duration = 1000L
-//            val changeBounds = ChangeBounds()
-//            changeBounds.duration = 2000L
-//
-//            myAutoTransition.addTransition(fade)
-//            myAutoTransition.addTransition(changeBounds)
-//
-//            TransitionManager.beginDelayedTransition(binding.transitionContainer, myAutoTransition)
-//            binding.text.visibility = if (isFlag) View.VISIBLE else {
-//                View.GONE
-//            }
-//        }
-//        binding.recyclerView.adapter = Adapter()
-
     }
-//    inner class Adapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-//        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-//            return MyViewHolder(
-//                LayoutInflater.from(parent.context).inflate(
-//                    R.layout.activity_animation_explode_recycle_view_item,
-//                    parent,
-//                    false
-//                ) as View
-//            )
-//        }
-//
-//        override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-//            holder.itemView.setOnClickListener {
-//
-//        //                val rect = Rect(it.x.toInt(), it.y.toInt(),
-//        //                    it.x.toInt() + it.width,
-//        //                    it.x.toInt() + it.height)
-//                val rect = Rect()
-//                it.getGlobalVisibleRect(rect)
-//
-//                val explode = Explode()
-//                explode.duration = 1000L
-//                explode.epicenterCallback = object : androidx.transition.Transition.EpicenterCallback(){
-//                    override fun onGetEpicenter(transition: androidx.transition.Transition): Rect {
-//                       return rect
-//                    }
-//
-//                }
-//
-//                TransitionManager.beginDelayedTransition(binding.recyclerView,
-//                    explode)
-//                binding.recyclerView.adapter = null
-//            }
-//        }
-//
-//            override fun getItemCount(): Int {
-//                return 32
-//            }
-//
-//            inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view)
-//
-//        }
-    }
+}
 
 
