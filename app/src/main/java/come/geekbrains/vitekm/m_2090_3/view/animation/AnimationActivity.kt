@@ -21,11 +21,10 @@ class AnimationActivity: AppCompatActivity() {
         binding = ActivityAnimationsBonusStartBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val constraintSetStart = ConstraintSet()
-        val constraintSetEnd = ConstraintSet()
+        val constraintSet = ConstraintSet()
         //constraintSetStart.clone(binding.constraintContainer)
-        constraintSetStart.clone(this, R.layout.activity_animations_bonus_start)
-        constraintSetEnd.clone(this, R.layout.activity_animations_bonus_end)
+        constraintSet.clone(this, R.layout.activity_animations_bonus_start)
+
 
         binding.backgroundImage.setOnClickListener{
             isFlag = !isFlag
@@ -36,10 +35,13 @@ class AnimationActivity: AppCompatActivity() {
             TransitionManager.beginDelayedTransition(binding.constraintContainer, transition)
 
             if (isFlag){
-                constraintSetEnd.applyTo(binding.constraintContainer)
+                constraintSet.connect(R.id.title, ConstraintSet.RIGHT, R.id.backgroundImage, ConstraintSet.RIGHT)
+
             }else{
-                constraintSetStart.applyTo(binding.constraintContainer)
+                constraintSet.connect(R.id.title, ConstraintSet.RIGHT, R.id.backgroundImage, ConstraintSet.LEFT)
+
             }
+            constraintSet.applyTo(binding.constraintContainer)
         }
     }
 }
