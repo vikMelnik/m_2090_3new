@@ -9,7 +9,6 @@ import come.geekbrains.vitekm.m_2090_3.databinding.ActivityMainRecyclerItemHeade
 import come.geekbrains.vitekm.m_2090_3.databinding.ActivityMainRecyclerItemMarsBinding
 import come.geekbrains.vitekm.m_2090_3.view.recycler.model.Data
 import come.geekbrains.vitekm.m_2090_3.view.recycler.model.TYPE_EARTH
-import come.geekbrains.vitekm.m_2090_3.view.recycler.model.TYPE_HEADER
 import come.geekbrains.vitekm.m_2090_3.view.recycler.model.TYPE_MARS
 
 class RecyclerAdapter(private val listData: List<Data>) :
@@ -30,39 +29,59 @@ class RecyclerAdapter(private val listData: List<Data>) :
             TYPE_MARS -> {
                 val binding =
                     ActivityMainRecyclerItemMarsBinding.inflate(LayoutInflater.from(parent.context))
-                MarsViewHolder(binding)
+             MarsViewHolder(binding)
 
             }
             else -> {
                 val binding =
                     ActivityMainRecyclerItemHeaderBinding.inflate(LayoutInflater.from(parent.context))
-                HeaderViewHolder(binding)
+               HeaderViewHolder(binding)
             }
         }
 
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        //TODO("Not yet implemented")
+        when(getItemViewType(position)){
+            TYPE_EARTH -> {
+                (holder as EarthViewHolder).bind(listData[position])
+
+            }
+            TYPE_MARS -> {
+                (holder as MarsViewHolder).bind(listData[position])
+            }
+            else -> {
+                (holder as HeaderViewHolder).bind(listData[position])
+            }
+        }
     }
 
     override fun getItemCount(): Int {
         return listData.size
     }
 
+}
+
     class EarthViewHolder(val binding: ActivityMainRecyclerItemEarthBinding) :
         RecyclerView.ViewHolder(binding.root) {
+        fun bind(data: Data) {
+            binding.name.text = data.name
+        }
 
     }
 
     class MarsViewHolder(val binding: ActivityMainRecyclerItemMarsBinding) :
         RecyclerView.ViewHolder(binding.root) {
+            fun bind(data: Data){
+                binding.name.text = data.name
+            }
 
     }
 
     class HeaderViewHolder(val binding: ActivityMainRecyclerItemHeaderBinding) :
         RecyclerView.ViewHolder(binding.root) {
-
+        fun bind(data: Data){
+            binding.name.text = data.name
     }
 
 }
