@@ -121,5 +121,8 @@
     <string name="craterDan">Кратер Даниэлсона</string>
     <string name="date">5 июня 2018 г.</string>
     <string name="tap_for_info">Tap for info</string>
+    <string name="header_recycler">Заголовок</string>
+    <string name="recycler_text">Дополнительный текст</string>
+    <string name="earth_recycler">Земля</string>
 
 </resources>
