@@ -132,6 +132,11 @@ class PictureOfTheDayFragment : Fragment() {
             fragment.arguments = bundle
             return fragment
         }
+
+        fun newInstance(): PictureOfTheDayFragment {
+            return PictureOfTheDayFragment()
+        }
+
         const val DAY_BUNDLE_EXTRA = "DAY_BUNDLE_EXTRA"
     }
 

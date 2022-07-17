@@ -27,10 +27,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        if(savedInstanceState==null){
-//            supportFragmentManager.beginTransaction().replace(R.id.container,
-//                PictureOfTheDayFragment.newInstance()).commit()
-//        }
+        if(savedInstanceState==null){
+            supportFragmentManager.beginTransaction().replace(R.id.container,
+                PictureOfTheDayFragment.newInstance()).commit()
+        }
 
     }
 
