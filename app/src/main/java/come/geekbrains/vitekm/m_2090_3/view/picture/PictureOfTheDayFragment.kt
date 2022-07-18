@@ -4,9 +4,20 @@ package come.geekbrains.vitekm.m_2090_3.view.picture
 import android.content.Intent
 import android.graphics.Typeface
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.SpannableStringBuilder
+import android.text.Spanned
+import android.text.style.BulletSpan
+import android.text.style.ForegroundColorSpan
+import android.text.style.ImageSpan
 import android.util.Log
 import android.view.*
+import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.toBitmap
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import coil.load
@@ -100,6 +111,7 @@ class PictureOfTheDayFragment : Fragment() {
         return super.onOptionsItemSelected(item)
     }
 
+    //radius ????????
     private fun renderData(appState: AppState) {
 
         when (appState) {
@@ -125,6 +137,43 @@ class PictureOfTheDayFragment : Fragment() {
                 }
                 binding.textView.text = appState.pictureOfTheDayResponseData.explanation
                 binding.textView.typeface = Typeface.createFromAsset(requireActivity().assets, "folder1/folder2/Aloevera.ttf")
+
+                val spanned: Spanned
+                val spannableString: SpannableString
+                val spannableStringBuilder: SpannableStringBuilder
+
+                val text = "My text \nbullet one \nbulleterter two\nbullet wetwwefrtweteone \nbullet wetwettwo\nbullet wetwetwone \nbullet two"
+
+                spannableString = SpannableString(text)
+
+                val bulletSpanOne = BulletSpan(20,
+                    ContextCompat.getColor(requireContext(), R.color.my_color))
+                val bulletSpanTwo = BulletSpan(20,
+                    ContextCompat.getColor(requireContext(), R.color.my_color))
+                ForegroundColorSpan( ContextCompat.getColor(requireContext(), R.color.my_color))
+
+                spannableString.setSpan(bulletSpanOne, 9, 20, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                spannableString.setSpan(bulletSpanTwo, 21, spannableString.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+                for (i in text.indices){
+                    if(text[i]=='t'){
+                        spannableString.setSpan(
+                            ForegroundColorSpan(ContextCompat.getColor(requireContext(),R.color.my_color)),
+                            i,i+1,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                    }
+                }
+
+                val bitmap = ContextCompat.getDrawable(requireContext(), R.drawable.ic_earth)!!.toBitmap()
+                for (i in text.indices){
+                    if(text[i]=='o'){
+                        spannableString.setSpan(
+                            ImageSpan(requireContext(), bitmap),
+                            i,i+1,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                    }
+                }
+                binding.textView.text = spannableString
+
+
             }
         }
 
