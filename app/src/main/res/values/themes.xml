@@ -1,35 +1,127 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.M_2090_3" parent="Theme.Material3.Light.NoActionBar">
+    <style name="Theme.M_2090_3" parent="Theme.Material3.DynamicColors.DayNight">
 
-        <!--        &lt;!&ndash; Primary brand color. &ndash;&gt;-->
-        <!--        <item name="colorPrimary">#763BFF</item>-->
-        <!--        <item name="colorPrimaryVariant">@color/purple_700</item>-->
-        <!--        <item name="colorOnPrimary">@color/white</item>-->
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
-        <item name="colorOnSecondary">@color/black</item>
+<!--        &lt;!&ndash; Primary brand color. &ndash;&gt;-->
+<!--        <item name="colorPrimary">@color/purple_500</item>-->
+<!--        <item name="colorPrimaryVariant">@color/purple_700</item>-->
+<!--        <item name="colorOnPrimary">@color/white</item>-->
+<!--        &lt;!&ndash; Secondary brand color. &ndash;&gt;-->
+<!--        <item name="colorSecondary">@color/teal_200</item>-->
+<!--        <item name="colorSecondaryVariant">@color/teal_700</item>-->
+<!--        <item name="colorOnSecondary">@color/black</item>-->
+<!--        &lt;!&ndash; Status bar color. &ndash;&gt;-->
+<!--        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>-->
+<!--        &lt;!&ndash; Customize your theme here. &ndash;&gt;-->
+<!--        -->
+
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
+        <item name="myColor">@color/my_color</item>
+        <item name="myColor2">@color/my_color_test</item>
+
+        <item name="bottomNavigationStyle">@style/MyBottomNavigationView</item>
+        <item name="shapeAppearanceMediumComponent">@style/MyShapeAppearanceMediumComponent</item>
+
+        <item name="bottomAppBarStyle">@style/MyAppBarStyle</item>
+        <item name="tabStyle">@style/MyTabLayoutStyle</item>
+
+
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!--        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>-->
+
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">#FF0101</item>
-        <item name="colorOnSurface">#FF0101</item>
-        <item name="colorOnSecondaryContainer">#FF0101</item>
-        <item name="colorPrimaryContainer">#FF0101</item>
-        <item name="colorSurface">#FF0101</item>
-        <item name="colorOnSurfaceVariant">#FF0101</item>
-        <item name="chipStyle">@style/MyStyle</item>
-        <item name="textInputStyle">@style/MyTextInputLayoutStyle</item>
+                <item name="textAppearanceBody2">@style/MyTextAppearanceBody2</item>
+                <item name="textAppearanceLabelLarge">@style/MyTextAppearanceBody2</item>
+<!--                <item name="colorPrimary">?attr/myColor</item>-->
+                <item name="colorOnSecondaryContainer">?myColor</item>
+
+                <item name="colorPrimaryContainer">?myColor</item>
+                <item name="colorOnSurfaceVariant">?myColor</item>
+                <item name="chipStyle">@style/MyStyle</item>
+                <item name="textInputStyle">@style/MyTextInputLayoutStyle</item>
+                <item name="shapeAppearanceSmallComponent">@style/MyShapeAppearanceSmallComponent</item>
     </style>
 
-    <style name="MyStyle" parent="Widget.Material3.Chip.Suggestion" >
+    <style name="MyBottomNavigationView" parent="Widget.Material3.BottomNavigationView">
+        <item name="itemActiveIndicatorStyle">@style/MyActiveIndicatorStyle</item>
+    </style>
+
+    <style name="MyActiveIndicatorStyle" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="shapeAppearance">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="android:color">?colorPrimary</item>
+    </style>
+
+    <style name="MyNewTheme" parent="Theme.M_2090_3" />
+
+    <!--    //MyThemes Red, Yellow, Purple ......-->
+    <style name="MyRedTheme" parent="MyNewTheme">
+        <item name="myColor">#FF0101</item>
+        <!-- Primary brand color. -->
+
+        <item name="colorPrimary">@color/red_1</item>
+        <item name="colorPrimaryVariant">@color/red_2</item>
+        <item name="colorOnPrimary">@color/red_3</item>
+
+    </style>
+
+    <style name="MyYellowTheme" parent="MyNewTheme">
+        <item name="myColor">#FFC107</item>
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/yellow_1</item>
+        <item name="colorPrimaryVariant">@color/yellow_2</item>
+        <item name="colorOnPrimary">@color/yellow_3</item>
+    </style>
+
+    <style name="MyPurpleTheme" parent="MyNewTheme">
+        <item name="myColor">#673AB7</item>
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/purple_1</item>
+        <item name="colorPrimaryVariant">@color/purple_2</item>
+        <item name="colorOnPrimary">@color/purple_3</item>
+    </style>
+
+    <style name="MyTextAppearanceBody2" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="fontFamily">@font/aladin</item>
+        <item name="android:fontFamily">@font/aladin</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">0.0378571429</item>
+    </style>
+
+    <style name="MyShapeAppearanceSmallComponent" parent="ShapeAppearance.Material3.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="MyTabLayoutStyle" parent="Widget.Material3.TabLayout">
+        <item name="tabIndicatorFullWidth">false</item>
+        <item name="tabIndicatorColor">?myColor2</item>
+    </style>
+
+    <style name="MyShapeAppearanceMediumComponent" parent="ShapeAppearance.Material3.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">30dp</item>
+    </style>
+
+
+    <style name="MyAppBarStyle" parent="Widget.Material3.BottomAppBar">
+        <item name="backgroundTint">?myColor2</item>
+        <item name="navigationIconTint">@color/white</item>
+    </style>
+
+
+    <style name="MyStyle" parent="Widget.Material3.Chip.Suggestion">
         <item name="chipBackgroundColor">@drawable/my_selector_chipes</item>
-        <item name="rippleColor">#FF5722</item>
+        <item name="rippleColor">#CF00F4</item>
+        <item name="android:textAppearance">@style/MyTextAppearanceBody2</item>
+        <item name="shapeAppearance">@style/MyShapeAppearanceSmallComponent</item>
 
     </style>
 
-    <style name="MyTextInputLayoutStyle" parent="Widget.Material3.TextInputLayout.OutlinedBox" >
+    <style name="MyTextInputLayoutStyle" parent="Widget.Material3.TextInputLayout.OutlinedBox">
         <item name="helperTextTextColor">#00BCD4</item>
         <item name="counterTextColor">@drawable/my_selector_chipes</item>
     </style>
@@ -39,7 +131,5 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.M_2090_3.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="Theme.M_2090_3.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

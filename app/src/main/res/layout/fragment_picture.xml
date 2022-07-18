@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -10,6 +10,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/chipGroup"
@@ -18,25 +21,26 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:singleSelection="true"
-        tools:ignore="MissingConstraints">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/inputLayout">
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chipDayBefore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="day before yesterday" />
+            android:text="@string/day_before_yesterday" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chipYesterday"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="yesterday" />
+            android:text="@string/yesterday" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chipToday"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="today" />
+            android:text="@string/today" />
     </com.google.android.material.chip.ChipGroup>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -51,10 +55,14 @@
         app:endIconMode="custom"
         app:helperText="wiki_helper_text"
         app:layout_constraintTop_toBottomOf="@+id/chipGroup">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/input"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColorHint="#546E7A"
+            tools:ignore="TextContrastCheck" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <come.geekbrains.vitekm.m_2090_3.utils.MyImageView
@@ -64,16 +72,23 @@
         android:layout_gravity="center"
         android:contentDescription="@string/photo_of_the_day_stub"
         app:layout_constraintTop_toBottomOf="@+id/inputLayout" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottom_app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:fabAlignmentMode="center"
+        app:navigationIcon="@drawable/ic_hamburger_menu_bottom_bar" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.9"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.9" />
+        app:layout_anchor="@id/bottom_app_bar"
+        app:srcCompat="@drawable/ic_plus_fab"
+        app:tint="#009688"
+        tools:ignore="SpeakableTextPresentCheck"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

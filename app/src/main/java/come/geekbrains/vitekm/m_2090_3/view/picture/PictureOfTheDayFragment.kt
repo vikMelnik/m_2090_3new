@@ -1,38 +1,27 @@
-package come.geekbrains.vitekm.m_2090_3.view
+package come.geekbrains.vitekm.m_2090_3.view.picture
 
 
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import coil.load
 import com.google.android.material.snackbar.Snackbar
+import come.geekbrains.vitekm.m_2090_3.MainActivity
 import come.geekbrains.vitekm.m_2090_3.R
 import come.geekbrains.vitekm.m_2090_3.databinding.FragmentPictureBinding
+import come.geekbrains.vitekm.m_2090_3.utils.*
+import come.geekbrains.vitekm.m_2090_3.view.drawer.BottomNavigationDrawerFragment
+import come.geekbrains.vitekm.m_2090_3.view.settings.SettingsFragment
 import come.geekbrains.vitekm.m_2090_3.viewmodel.AppState
 import come.geekbrains.vitekm.m_2090_3.viewmodel.PictureOfTheDayViewModel
-import java.util.*
+
 
 
 class PictureOfTheDayFragment : Fragment() {
-
-    private val c = Calendar.getInstance()
-    private val year = c.get(Calendar.YEAR).toString()
-
-    private val month = (c.get(Calendar.MONTH) + 1).toString()
-
-    private val day = c.get(Calendar.DAY_OF_MONTH).toString()
-
-    private val yesterday = (c.get(Calendar.DAY_OF_MONTH) - 1).toString()
-    private val beforeYesterday = (c.get(Calendar.DAY_OF_MONTH) - 2).toString()
-
-   // private val date: String = SimpleDateFormat("yyyy-MM-dd").format(Date())
-
 
     private var _binding: FragmentPictureBinding? = null
     private val binding get() = _binding!!
@@ -52,6 +41,7 @@ class PictureOfTheDayFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         viewModel.getLiveData().observe(viewLifecycleOwner) { appState ->
             renderData(appState)
         }
@@ -59,16 +49,15 @@ class PictureOfTheDayFragment : Fragment() {
         Log.d("MyLog", "$year-$month-$day")
 
         binding.chipDayBefore.setOnClickListener {
-            viewModel.sendRequest("$year-$month-$beforeYesterday")
+            viewModel.sendRequest("$year2-$month2-$beforeYesterday")
         }
 
         binding.chipToday.setOnClickListener {
             viewModel.sendRequest("$year-$month-$day")
         }
-        //binding.chipYesterday.isEnabled = false
-        binding.chipYesterday.setOnClickListener {
-            viewModel.sendRequest("$year-$month-$yesterday")
 
+        binding.chipYesterday.setOnClickListener {
+            viewModel.sendRequest("$year1-$month1-$yesterday")
 
         }
 
@@ -77,6 +66,36 @@ class PictureOfTheDayFragment : Fragment() {
                 data = Uri.parse("https://en.wikipedia.org/wiki/${binding.input.text.toString()}")
             })
         }
+        setBottomAppBar(view)
+    }
+
+    private fun setBottomAppBar(view: View) {
+        val context = activity as MainActivity
+        context.setSupportActionBar(view.findViewById(R.id.bottom_app_bar))
+        setHasOptionsMenu(true)
+
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.menu_main, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_favorite -> {}
+            R.id.action_settings -> {
+                requireActivity().supportFragmentManager.beginTransaction().hide(this)
+                    .add(R.id.container, SettingsFragment.newInstance()).addToBackStack("").commit()
+            }
+            android.R.id.home -> {
+                activity?.let {
+                    BottomNavigationDrawerFragment().show(it.supportFragmentManager, "tag")
+                }
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
     private fun renderData(appState: AppState) {
