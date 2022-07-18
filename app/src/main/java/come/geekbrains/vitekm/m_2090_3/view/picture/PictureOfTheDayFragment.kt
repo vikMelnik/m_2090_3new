@@ -6,6 +6,8 @@ import android.graphics.Typeface
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.SpannableStringBuilder
@@ -13,12 +15,14 @@ import android.text.Spanned
 import android.text.style.BulletSpan
 import android.text.style.ForegroundColorSpan
 import android.text.style.ImageSpan
+import android.text.style.TypefaceSpan
 import android.util.Log
 import android.view.*
 import android.widget.TextView
-import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
+import androidx.core.provider.FontRequest
+import androidx.core.provider.FontsContractCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import coil.load
@@ -112,7 +116,7 @@ class PictureOfTheDayFragment : Fragment() {
         return super.onOptionsItemSelected(item)
     }
 
-    //radius ????????
+
     private fun renderData(appState: AppState) {
 
         when (appState) {
@@ -154,13 +158,17 @@ class PictureOfTheDayFragment : Fragment() {
 
                 result.forEach {
                     if(current!=it){
-                        spannableStringBuilder.setSpan(BulletSpan(20,ContextCompat.getColor(requireContext(),R.color.my_color)),
-                            current+1,it,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                            spannableStringBuilder.setSpan(BulletSpan(20,ContextCompat.getColor(requireContext(),R.color.my_color),20),
+                                current+1,it,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                        }
                     }
                     current = it
                 }
-                spannableStringBuilder.setSpan(BulletSpan(20,ContextCompat.getColor(requireContext(),R.color.my_color)),
-                    current+1,text.length,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                    spannableStringBuilder.setSpan(BulletSpan(20,ContextCompat.getColor(requireContext(),R.color.my_color),20),
+                        current+1,text.length,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                }
 
                 Log.d("@@@",result.toString())
 
@@ -183,10 +191,26 @@ class PictureOfTheDayFragment : Fragment() {
                 }
 
                 spannableStringBuilder.insert(3, "word ")
-
 //                binding.textView.text = spannableStringBuilder
 
+                val request = FontRequest("com.google.android.gms.fonts","com.google.android.gms","Aladin",
+                    R.array.com_google_android_gms_fonts_certs)
 
+                val callback = object : FontsContractCompat.FontRequestCallback(){
+                    override fun onTypefaceRetrieved(typeface: Typeface?) {
+                        typeface?.let{
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                                spannableStringBuilder.setSpan(
+                                    TypefaceSpan(it),
+                                    0,spannableStringBuilder.length,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                            }
+                        }
+
+                        super.onTypefaceRetrieved(typeface)
+                    }
+                }
+
+                FontsContractCompat.requestFont(requireContext(),request,callback, Handler(Looper.getMainLooper()))
             }
         }
 
