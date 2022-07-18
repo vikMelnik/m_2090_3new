@@ -2,18 +2,18 @@
     <!-- Base application theme. -->
     <style name="Theme.M_2090_3" parent="Theme.Material3.DynamicColors.DayNight">
 
-<!--        &lt;!&ndash; Primary brand color. &ndash;&gt;-->
-<!--        <item name="colorPrimary">@color/purple_500</item>-->
-<!--        <item name="colorPrimaryVariant">@color/purple_700</item>-->
-<!--        <item name="colorOnPrimary">@color/white</item>-->
-<!--        &lt;!&ndash; Secondary brand color. &ndash;&gt;-->
-<!--        <item name="colorSecondary">@color/teal_200</item>-->
-<!--        <item name="colorSecondaryVariant">@color/teal_700</item>-->
-<!--        <item name="colorOnSecondary">@color/black</item>-->
-<!--        &lt;!&ndash; Status bar color. &ndash;&gt;-->
-<!--        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>-->
-<!--        &lt;!&ndash; Customize your theme here. &ndash;&gt;-->
-<!--        -->
+        <!--        &lt;!&ndash; Primary brand color. &ndash;&gt;-->
+        <!--        <item name="colorPrimary">@color/purple_500</item>-->
+        <!--        <item name="colorPrimaryVariant">@color/purple_700</item>-->
+        <!--        <item name="colorOnPrimary">@color/white</item>-->
+        <!--        &lt;!&ndash; Secondary brand color. &ndash;&gt;-->
+        <!--        <item name="colorSecondary">@color/teal_200</item>-->
+        <!--        <item name="colorSecondaryVariant">@color/teal_700</item>-->
+        <!--        <item name="colorOnSecondary">@color/black</item>-->
+        <!--        &lt;!&ndash; Status bar color. &ndash;&gt;-->
+        <!--        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>-->
+        <!--        &lt;!&ndash; Customize your theme here. &ndash;&gt;-->
+        <!--        -->
 
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -32,16 +32,16 @@
         <!--        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>-->
 
         <!-- Customize your theme here. -->
-                <item name="textAppearanceBody2">@style/MyTextAppearanceBody2</item>
-                <item name="textAppearanceLabelLarge">@style/MyTextAppearanceBody2</item>
-<!--                <item name="colorPrimary">?attr/myColor</item>-->
-                <item name="colorOnSecondaryContainer">?myColor</item>
+        <item name="textAppearanceBody2">@style/MyTextAppearanceBody2</item>
+        <item name="textAppearanceLabelLarge">@style/MyTextAppearanceBody2</item>
+        <!--                <item name="colorPrimary">?attr/myColor</item>-->
+        <item name="colorOnSecondaryContainer">?myColor</item>
 
-                <item name="colorPrimaryContainer">?myColor</item>
-                <item name="colorOnSurfaceVariant">?myColor</item>
-                <item name="chipStyle">@style/MyStyle</item>
-                <item name="textInputStyle">@style/MyTextInputLayoutStyle</item>
-                <item name="shapeAppearanceSmallComponent">@style/MyShapeAppearanceSmallComponent</item>
+        <item name="colorPrimaryContainer">?myColor</item>
+        <item name="colorOnSurfaceVariant">?myColor</item>
+        <!--                <item name="chipStyle">@style/MyStyle</item>-->
+        <!--                <item name="textInputStyle">@style/MyTextInputLayoutStyle</item>-->
+        <item name="shapeAppearanceSmallComponent">@style/MyShapeAppearanceSmallComponent</item>
     </style>
 
     <style name="MyBottomNavigationView" parent="Widget.Material3.BottomNavigationView">
@@ -49,7 +49,8 @@
     </style>
 
     <style name="MyActiveIndicatorStyle" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
-        <item name="shapeAppearance">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearance">@style/ShapeAppearanceOverlay.Material3.NavigationView.Item
+        </item>
         <item name="android:color">?colorPrimary</item>
     </style>
 
@@ -89,6 +90,10 @@
         <item name="android:textAllCaps">true</item>
         <item name="android:textSize">14sp</item>
         <item name="android:letterSpacing">0.0378571429</item>
+    </style>
+
+    <style name="MyCardViewStyle" parent="Widget.MaterialComponents.CardView">
+        <item name="shapeAppearance">@style/MyShapeAppearanceMediumComponent</item>
     </style>
 
     <style name="MyShapeAppearanceSmallComponent" parent="ShapeAppearance.Material3.SmallComponent">

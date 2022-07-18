@@ -4,4 +4,5 @@
     <dimen name="constraint_layout_padding_start">8dp</dimen>
     <dimen name="constraint_layout_padding_end">8dp</dimen>
     <dimen name="tabs_margin_top">16dp</dimen>
+    <dimen name="tab_indicator_margin">32dp</dimen>
 </resources>

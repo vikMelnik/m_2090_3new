@@ -21,5 +21,8 @@
     <string name="yesterday">Yesterday</string>
     <string name="day_before_yesterday">Day before yesterday</string>
     <string name="today">Today</string>
+    <string name="earth">Earth</string>
+    <string name="mars">Mars</string>
+    <string name="system">Sun System</string>
 
 </resources>
