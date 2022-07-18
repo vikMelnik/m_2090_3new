@@ -2,6 +2,7 @@ package come.geekbrains.vitekm.m_2090_3.view.picture
 
 
 import android.content.Intent
+import android.graphics.Typeface
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -122,6 +123,8 @@ class PictureOfTheDayFragment : Fragment() {
                     placeholder(R.drawable.loading)
                     error(R.drawable.ic_baseline_error_24)
                 }
+                binding.textView.text = appState.pictureOfTheDayResponseData.explanation
+                binding.textView.typeface = Typeface.createFromAsset(requireActivity().assets, "folder1/folder2/Aloevera.ttf")
             }
         }
 

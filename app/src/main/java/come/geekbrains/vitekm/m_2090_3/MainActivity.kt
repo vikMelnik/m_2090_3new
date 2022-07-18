@@ -50,8 +50,8 @@ class MainActivity : AppCompatActivity() {
     private fun getRealStyle(currentTheme: Int): Int {
         return when (currentTheme) {
             ThemeRed -> R.style.MyRedTheme
-            ThemeYellow -> R.style.MyYellowTheme
-            ThemePurple -> R.style.MyPurpleTheme
+//            ThemeYellow -> R.style.MyYellowTheme
+//            ThemePurple -> R.style.MyPurpleTheme
             else -> 0
         }
     }
