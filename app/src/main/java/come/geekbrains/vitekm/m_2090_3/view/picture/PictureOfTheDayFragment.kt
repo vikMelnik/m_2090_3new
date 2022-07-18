@@ -15,6 +15,7 @@ import android.text.style.ForegroundColorSpan
 import android.text.style.ImageSpan
 import android.util.Log
 import android.view.*
+import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
@@ -140,22 +141,25 @@ class PictureOfTheDayFragment : Fragment() {
 
                 val spanned: Spanned
                 val spannableString: SpannableString
-                val spannableStringBuilder: SpannableStringBuilder
+                var spannableStringBuilder: SpannableStringBuilder
 
                 val text = "My text \nbullet one \nbulleterter two\nbullet wetwwefrtweteone \nbullet wetwettwo\nbullet wetwetwone \nbullet two"
-                spannableString = SpannableString(text)
+                spannableStringBuilder = SpannableStringBuilder(text)
+
+                binding.textView.setText(spannableStringBuilder, TextView.BufferType.EDITABLE)
+                spannableStringBuilder = binding.textView.text as SpannableStringBuilder
 
                 val result = text.indexesOf("\n")
                 var current = result.first()
 
                 result.forEach {
                     if(current!=it){
-                        spannableString.setSpan(BulletSpan(20,ContextCompat.getColor(requireContext(),R.color.my_color)),
+                        spannableStringBuilder.setSpan(BulletSpan(20,ContextCompat.getColor(requireContext(),R.color.my_color)),
                             current+1,it,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
                     }
                     current = it
                 }
-                spannableString.setSpan(BulletSpan(20,ContextCompat.getColor(requireContext(),R.color.my_color)),
+                spannableStringBuilder.setSpan(BulletSpan(20,ContextCompat.getColor(requireContext(),R.color.my_color)),
                     current+1,text.length,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
 
                 Log.d("@@@",result.toString())
@@ -163,7 +167,7 @@ class PictureOfTheDayFragment : Fragment() {
 
                 for (i in text.indices){
                     if(text[i]=='t'){
-                        spannableString.setSpan(
+                        spannableStringBuilder.setSpan(
                             ForegroundColorSpan(ContextCompat.getColor(requireContext(),R.color.my_color)),
                             i,i+1,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
                     }
@@ -172,20 +176,22 @@ class PictureOfTheDayFragment : Fragment() {
                 val bitmap = ContextCompat.getDrawable(requireContext(), R.drawable.ic_earth)!!.toBitmap()
                 for (i in text.indices){
                     if(text[i]=='o'){
-                        spannableString.setSpan(
+                        spannableStringBuilder.setSpan(
                             ImageSpan(requireContext(), bitmap),
                             i,i+1,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
                     }
                 }
 
-                binding.textView.text = spannableString
+                spannableStringBuilder.insert(3, "word ")
+
+//                binding.textView.text = spannableStringBuilder
 
 
             }
         }
 
     }
-    fun String.indexesOf(substr: String, ignoreCase: Boolean = true): List<Int> =
+    private fun String.indexesOf(substr: String, ignoreCase: Boolean = true): List<Int> =
         (if (ignoreCase) Regex(substr, RegexOption.IGNORE_CASE) else Regex(substr))
             .findAll(this).map { it.range.first }.toList()
 
