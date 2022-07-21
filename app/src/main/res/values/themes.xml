@@ -56,6 +56,11 @@
 
     <style name="MyNewTheme" parent="Theme.M_2090_3" />
 
+    <style name="SplashTheme" parent="MyNewTheme" >
+        <item name="android:windowBackground">@drawable/splash_background</item>
+
+    </style>
+
     <!--    //MyThemes Red, Yellow, Purple ......-->
     <style name="MyRedTheme" parent="MyNewTheme">
         <item name="myColor">#FF0101</item>

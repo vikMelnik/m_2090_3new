@@ -7,7 +7,6 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="color_gray">#66676565</color>
     <color name="colorPrimary">#FF6200EE</color>
     <color name="colorAccent">#FF03DAC5</color>
     <color name="orange">#FF5722</color>
@@ -28,4 +27,24 @@
     <color name="purple_1">#9768EA</color>
     <color name="purple_2">#6238AE</color>
     <color name="purple_3">#341F59</color>
+
+    <color name="red">#FF0101</color>
+
+    <color name="light_gray">#BEBEBE</color>
+    <color name="color_gray">#668B8A8A</color>
+
+
+    <color name="color_color_gray_main">#515151</color>
+    <color name="color_color_gray_tetriary">#808080</color>
+
+    <!-- Dark Text Color for Light Background -->
+    <color name="textDarkPrimary">#DE000000</color> <!--DE for %87 opacity-->
+    <color name="textDarkSecondary">#8A000000</color> <!--8A for %54 opacity-->
+    <color name="textDarkDisabled">#61000000</color> <!--61 for %38 opacity-->
+
+    <!-- White Text Color for Dark Background -->
+    <color name="textLightPrimary">#FFFFFF</color> <!--%100 opacity-->
+    <color name="textLightSecondary">#B2FFFFFF</color> <!--B2 for %70 opacity-->
+    <color name="textLightDisabled">#80FFFFFF</color> <!--80 for %50 opacity-->
+    <color name="textLightDisabledDEPRECATED">#4CFFFFFF</color>
 </resources>
