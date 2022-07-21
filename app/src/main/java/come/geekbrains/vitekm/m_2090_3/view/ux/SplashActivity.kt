@@ -1,8 +1,13 @@
 package come.geekbrains.vitekm.m_2090_3.view.ux
 
+import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.os.Handler
+import android.os.Looper
+import android.view.View
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.progressindicator.LinearProgressIndicator
 import come.geekbrains.vitekm.m_2090_3.R
@@ -12,12 +17,16 @@ class SplashActivity : AppCompatActivity() { //TODO HW single-activity пыта�
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
+
         val progress = findViewById<LinearProgressIndicator>(R.id.progress)
 
-        //findViewById<ImageView>(R.id.progress).animate().rotation(7200f).setDuration(20000L).start()
+        //findViewById<ImageView>(R.id.icon).animate().rotation(7200f).setDuration(20000L).start()
 
-        //ObjectAnimator.ofFloat(findViewById<ImageView>(R.id.icon),View.ROTATION,720f).setDuration(2000L).start()
-        // progress.progress = 50
+       // ObjectAnimator.ofFloat(findViewById<ImageView>(R.id.icon), View.ROTATION,720f).setDuration(2000L).start()
+
+
+
+       // progress.progress = 50
         val fullTime = 5000f
         object: CountDownTimer(fullTime.toLong(),1L){
             override fun onTick(millisUntilFinished: Long) {
@@ -33,9 +42,9 @@ class SplashActivity : AppCompatActivity() { //TODO HW single-activity пыта�
 
         }.start()
 
-        /*Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this,UXActivity::class.java))
-            finish()
-        },)*/
+//        Handler(Looper.getMainLooper()).postDelayed({
+//            startActivity(Intent(this,UXActivity::class.java))
+//            finish()
+//        }, 2000L)
     }
 }
