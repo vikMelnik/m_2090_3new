@@ -11,7 +11,7 @@ class UXActivity   : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setTheme(R.style.MyNewTheme)
+       // setTheme(R.style.MyNewTheme)
 
         binding = ActivityUxBinding.inflate(layoutInflater)
         setContentView(binding.root)
