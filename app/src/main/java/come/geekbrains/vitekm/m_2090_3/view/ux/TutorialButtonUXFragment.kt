@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import come.geekbrains.vitekm.m_2090_3.databinding.FragmentUxButtonBinding
+import smartdevelop.ir.eram.showcaseviewlib.GuideView
+import smartdevelop.ir.eram.showcaseviewlib.config.DismissType
 
 class TutorialButtonUXFragment : Fragment() {
     private var _binding: FragmentUxButtonBinding? = null
@@ -31,19 +33,19 @@ class TutorialButtonUXFragment : Fragment() {
     }
 
     private fun show() {
-//        GuideView.Builder(requireContext())
-//            .setTitle("Guide Title Text")
-//            .setContentText("Guide Description Text\n .....Guide Description Text\n .....Guide Description Text .....")
-//            .setTargetView(binding.btnBad)
-//            .setDismissType(DismissType.anywhere) //optional - default dismissible by TargetView
-//            .build()
-//            .show()
+        GuideView.Builder(requireContext())
+            .setTitle("Guide Title Text")
+            .setContentText("Guide Description Text\n .....Guide Description Text\n .....Guide Description Text .....")
+            .setTargetView(binding.btnBad)
+            .setDismissType(DismissType.anywhere) //optional - default dismissible by TargetView
+            .build()
+            .show()
     }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         _binding = FragmentUxButtonBinding.inflate(inflater, container, false)
         return binding.root
