@@ -34,13 +34,13 @@ class PictureOfTheDayViewModel(private val liveData: MutableLiveData<AppState> =
             if(response.isSuccessful){
                 liveData.postValue(AppState.Success(response.body()!!))
             }else{
-                liveData.postValue(AppState.Error(throw IllegalStateException("что-то пошло не так")))
+                liveData.postValue(AppState.Error(IllegalStateException("что-то пошло не так")))
             }
         }
 
         override fun onFailure(call: Call<PictureOfTheDayResponseDate>, t: Throwable) {
             // TODO HW
-            liveData.postValue(AppState.Error(throw RuntimeException(" сетевой сбой сервера ")))
+            liveData.postValue(AppState.Error(RuntimeException(" сетевой сбой сервера ")))
             t.printStackTrace()
         }
     }

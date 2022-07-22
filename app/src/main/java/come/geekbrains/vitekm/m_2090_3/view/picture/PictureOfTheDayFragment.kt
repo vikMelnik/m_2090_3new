@@ -2,10 +2,25 @@ package come.geekbrains.vitekm.m_2090_3.view.picture
 
 
 import android.content.Intent
+import android.graphics.Color.red
+import android.graphics.Typeface
 import android.net.Uri
-import android.os.Bundle
+import android.os.*
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.SpannableStringBuilder
+import android.text.Spanned
+import android.text.style.BulletSpan
+import android.text.style.ForegroundColorSpan
+import android.text.style.ImageSpan
+import android.text.style.TypefaceSpan
 import android.util.Log
 import android.view.*
+import android.widget.TextView
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.toBitmap
+import androidx.core.provider.FontRequest
+import androidx.core.provider.FontsContractCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import coil.load
@@ -24,7 +39,7 @@ class PictureOfTheDayFragment : Fragment() {
 
     private var _binding: FragmentPictureBinding? = null
     private val binding get() = _binding!!
-
+    lateinit var spannableRainbow: SpannableString
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -99,6 +114,7 @@ class PictureOfTheDayFragment : Fragment() {
         return super.onOptionsItemSelected(item)
     }
 
+
     private fun renderData(appState: AppState) {
 
         when (appState) {
@@ -122,16 +138,140 @@ class PictureOfTheDayFragment : Fragment() {
                     placeholder(R.drawable.loading)
                     error(R.drawable.ic_baseline_error_24)
                 }
+                val text = appState.pictureOfTheDayResponseData.explanation
+                binding.textView.typeface = Typeface.createFromAsset(requireActivity().assets, "folder1/folder2/Aloevera.ttf")
+
+                var spannableStringBuilder: SpannableStringBuilder
+
+                spannableRainbow = SpannableString(text)
+                rainbow(1)
+                spannableStringBuilder = SpannableStringBuilder(text)
+
+                binding.textView.setText(spannableStringBuilder, TextView.BufferType.EDITABLE)
+                spannableStringBuilder = binding.textView.text as SpannableStringBuilder
+
+//                val result = text.indexesOf("\n")
+//                var current = result.first()
+//
+//                result.forEach {
+//                    if(current!=it){
+//                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+//                            spannableStringBuilder.setSpan(BulletSpan(20,ContextCompat.getColor(requireContext(),R.color.my_color),20),
+//                                current+1,it,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+//                        }
+//                    }
+//                    current = it
+//                }
+//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+//                    spannableStringBuilder.setSpan(BulletSpan(20,ContextCompat.getColor(requireContext(),R.color.my_color),20),
+//                        current+1,text.length,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+//                }
+//
+//                Log.d("@@@",result.toString())
+
+
+                for (i in text.indices){
+                    if(text[i]=='a'){
+                        spannableStringBuilder.setSpan(
+                            ForegroundColorSpan(ContextCompat.getColor(requireContext(),R.color.my_color)),
+                            i,i+1,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                    }
+                }
+
+//                val bitmap = ContextCompat.getDrawable(requireContext(), R.drawable.ic_earth)!!.toBitmap()
+//                for (i in text.indices){
+//                    if(text[i]=='o'){
+//                        spannableStringBuilder.setSpan(
+//                            ImageSpan(requireContext(), bitmap),
+//                            i,i+1,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+//                    }
+//                }
+
+                spannableStringBuilder.insert(2, " friend")
+                //binding.textView.text = spannableStringBuilder
+
+                val request = FontRequest("com.google.android.gms.fonts","com.google.android.gms","Aladin",
+                    R.array.com_google_android_gms_fonts_certs)
+
+                val callback = object : FontsContractCompat.FontRequestCallback(){
+                    override fun onTypefaceRetrieved(typeface: Typeface?) {
+                        typeface?.let{
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                                spannableStringBuilder.setSpan(
+                                    TypefaceSpan(it),
+                                    0,spannableStringBuilder.length,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                            }
+                        }
+
+                        super.onTypefaceRetrieved(typeface)
+                    }
+                }
+
+                FontsContractCompat.requestFont(requireContext(),request,callback, Handler(Looper.getMainLooper()))
             }
         }
 
     }
+
+    private fun rainbow(i: Int) {
+        var currentCount = i
+        val x = object : CountDownTimer(20000, 200) {
+            override fun onTick(millisUntilFinished: Long) {
+                colorText(currentCount)
+                currentCount = if (++currentCount>5) 1 else currentCount
+            }
+            override fun onFinish() {
+                rainbow(currentCount)
+            }
+        }
+        x.start()
+    }
+
+    private fun colorText(currentCount: Int) {
+        binding.textView.setText(spannableRainbow, TextView.BufferType.SPANNABLE)
+        spannableRainbow = binding.textView.text as SpannableString
+        val map = mapOf(
+            0 to ContextCompat.getColor(requireContext(), R.color.my_color),
+            1 to ContextCompat.getColor(requireContext(), R.color.orange),
+            2 to ContextCompat.getColor(requireContext(), R.color.yellow_2),
+            3 to ContextCompat.getColor(requireContext(), R.color.green),
+            4 to ContextCompat.getColor(requireContext(), R.color.blue),
+            5 to ContextCompat.getColor(requireContext(), R.color.purple_700),
+            6 to ContextCompat.getColor(requireContext(), R.color.purple_500)
+        )
+        val spans = spannableRainbow.getSpans(
+            0, spannableRainbow.length,
+            ForegroundColorSpan::class.java
+        )
+        for (span in spans) {
+            spannableRainbow.removeSpan(span)
+        }
+        var colorNumber = currentCount
+        for (i in 0 until binding.textView.text.length) {
+            if (colorNumber == 5) colorNumber = 0 else colorNumber += 1
+            spannableRainbow.setSpan(
+                ForegroundColorSpan(map.getValue(colorNumber)),
+                i, i + 1,
+                Spannable.SPAN_EXCLUSIVE_INCLUSIVE
+            )
+        }
+    }
+
+    private fun String.indexesOf(substr: String, ignoreCase: Boolean = true): List<Int> =
+        (if (ignoreCase) Regex(substr, RegexOption.IGNORE_CASE) else Regex(substr))
+            .findAll(this).map { it.range.first }.toList()
+
     companion object {
         fun newInstance(bundle: Bundle) : PictureOfTheDayFragment {
             val fragment = PictureOfTheDayFragment()
             fragment.arguments = bundle
             return fragment
         }
+
+        fun newInstance(): PictureOfTheDayFragment {
+            return PictureOfTheDayFragment()
+        }
+
         const val DAY_BUNDLE_EXTRA = "DAY_BUNDLE_EXTRA"
     }
 

@@ -10,6 +10,9 @@
     <color name="color_gray">#66676565</color>
     <color name="colorPrimary">#FF6200EE</color>
     <color name="colorAccent">#FF03DAC5</color>
+    <color name="orange">#FF5722</color>
+    <color name="green">#3DC843</color>
+    <color name="blue">#2196F3</color>
 
     <color name="my_color">#FFFF0101</color>
     <color name="my_color_test">#9C27B0</color>

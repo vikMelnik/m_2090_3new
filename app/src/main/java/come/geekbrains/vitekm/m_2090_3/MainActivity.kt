@@ -27,10 +27,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        if(savedInstanceState==null){
-//            supportFragmentManager.beginTransaction().replace(R.id.container,
-//                PictureOfTheDayFragment.newInstance()).commit()
-//        }
+        if(savedInstanceState==null){
+            supportFragmentManager.beginTransaction().replace(R.id.container,
+                PictureOfTheDayFragment.newInstance()).commit()
+        }
 
     }
 
@@ -50,8 +50,8 @@ class MainActivity : AppCompatActivity() {
     private fun getRealStyle(currentTheme: Int): Int {
         return when (currentTheme) {
             ThemeRed -> R.style.MyRedTheme
-            ThemeYellow -> R.style.MyYellowTheme
-            ThemePurple -> R.style.MyPurpleTheme
+//            ThemeYellow -> R.style.MyYellowTheme
+//            ThemePurple -> R.style.MyPurpleTheme
             else -> 0
         }
     }
